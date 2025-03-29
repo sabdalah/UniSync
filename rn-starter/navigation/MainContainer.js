@@ -1,18 +1,20 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // Screens
 import HomeScreen from '../src/screens/HomeScreen'
 import CalendarScreen from '../src/screens/CalendarScreen'
 import NewsScreen from '../src/screens/NewsScreen'
+import ChatScreen from  '../src/screens/ChatScreen'
 
 
 //Screen names
 const Home = 'Home';
 const Calendar = 'Calendar';
 const News = 'News';
+const Chat = 'Chats';
 
 const Tab = createBottomTabNavigator();
 
@@ -35,6 +37,9 @@ export default function MainContainer(){
                           } else if (rn === News) {
                             iconName = focused ? "newspaper" : "newspaper-outline";
                           }
+                          else if (rn==Chat){
+                            iconName = focused ? "chatbubble": "chatbubble-outline"
+                          }
 
                           return <Ionicons name={iconName} size={size} color={color}/>;
 
@@ -55,6 +60,7 @@ export default function MainContainer(){
                 <Tab.Screen name={Home} component={HomeScreen}/>
                 <Tab.Screen name={Calendar} component={CalendarScreen}/>
                 <Tab.Screen name={News} component={NewsScreen} />
+                <Tab.Screen name={Chat} component={ChatScreen} />
 
             </Tab.Navigator>
         </NavigationContainer>
